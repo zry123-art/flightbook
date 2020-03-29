@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zry.mapper.UserMapper">
+    <select id="queryUserList"  resultType="com.zry.pojo.User">
+        select * from t_user
+    </select>
+
+    <select id="queryUserById" parameterType="Integer" resultType="com.zry.pojo.User">
+        select * from t_user where u_id=#{u_id}
+    </select>
+
+    <select id="adminLogin" parameterType="String" resultType="com.zry.pojo.User">
+        select * from t_user where u_tel=#{u_tel}
+    </select>
+
+    <select id="queryPwdById" parameterType="Integer" resultType="String">
+        select u_pwd from t_user where u_id=#{u_id}
+    </select>
+
+    <update id="updateUserInfo" parameterType="com.zry.pojo.User">
+        update t_user set u_name=#{u_name},u_sex=#{u_sex},u_age=#{u_age},
+                          u_addr=#{u_addr},u_email=#{u_email},u_idCard=#{u_idCard}
+                            where u_id=#{u_id}
+    </update>
+
+</mapper>
